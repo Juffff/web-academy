@@ -8,15 +8,15 @@ body {
     display: flex;
     border: double 2vh #FF681C;
     border-radius: 5%;
-    width: 100vh;
-    height: 100vh;
+    width: 90vh;
+    height: 90vh;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .flex-container .flex-item {
-    font-size: 15vh;
+    font-size: 14vh;
     background: #7474FF;
     color: #000088;
     width: 20.5%;
@@ -32,9 +32,19 @@ body {
     height: 20.5%;
 }
 
+
 .flex-item .innerText {
+    font-family: fantasy;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+    animation: blinker 4s linear infinite;
+}
+
+
+@keyframes blinker {
+    0% {color: black}
+    50%{color: brown}
+    100% {color: black}
 }
 
