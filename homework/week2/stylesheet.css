@@ -1,0 +1,40 @@
+
+body {
+    background: #FFE5D7;
+}
+
+.flex-container {
+    background: #FFAC82;
+    display: flex;
+    border: double 2vh #FF681C;
+    border-radius: 5%;
+    width: 100vh;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.flex-container .flex-item {
+    font-size: 15vh;
+    background: #7474FF;
+    color: #000088;
+    width: 20.5%;
+    height: 20.5%;
+    border: solid 1px #FF681C;
+    border-radius: 25%;
+    display: table;
+
+}
+
+.flex-container .flex-item-empty {
+    width: 20.5%;
+    height: 20.5%;
+}
+
+.flex-item .innerText {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
