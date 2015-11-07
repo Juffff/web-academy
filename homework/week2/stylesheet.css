@@ -3,7 +3,9 @@ body {
     background: #FFE5D7;
 }
 
+
 .flex-container {
+    margin-left: 25%;
     background: #FFAC82;
     display: flex;
     border: double 2vh #FF681C;
@@ -21,7 +23,7 @@ body {
     color: #000088;
     width: 20.5%;
     height: 20.5%;
-    border: solid 1px #FF681C;
+    border: inset .4vh #FF681C;
     border-radius: 25%;
     display: table;
 
@@ -47,4 +49,3 @@ body {
     50%{color: brown}
     100% {color: black}
 }
-
