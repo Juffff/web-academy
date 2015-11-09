@@ -13,7 +13,7 @@ body {
     font-family: 'America', sans-serif;
 }
 
-div{
+div {
     margin-top: 1vh;
     display: block;
     background: repeating-linear-gradient(180deg, black 0%, #545E61 100%);
@@ -25,8 +25,6 @@ div{
     border-radius: 3vh;
 }
 
-
-
 .parent {
     opacity: 0.9;
     position: absolute;
@@ -34,9 +32,8 @@ div{
     margin-top: 1%;
     list-style: none;
     color: lightblue;
-    font-size: 4vh;
+    font-size: 120%;
 }
-
 
 a {
     color: lightblue;
@@ -51,6 +48,7 @@ a:hover {
     display: block;
     list-style: none;
     float: left;
+    height: 10vh;
     line-height: 10vh;
     width: 18vw;
     text-align: center;
@@ -60,25 +58,25 @@ a:hover {
     border-right-width: 0.25vh;
     border-left-width: 0.25vh;
     margin-top: -1vh;
-    overflow: hidden;
 }
 
 .parent li:hover {
     background: linear-gradient(45deg, brown, orangered);
     color: #00ffb5;
-
 }
 
-
 .parent ul {
-    display: none;
+    display: block;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+
 }
 
 .parent li:hover > ul {
     display: block;
     list-style: none;
+    opacity: 1;
 }
-
 
 .child {
     display: table;
@@ -88,7 +86,7 @@ a:hover {
     position: absolute;
 }
 
-.child>li{
+.child > li {
     height: 7vh;
     line-height: 7vh;
     margin-top: 1.5vh;
