@@ -1,0 +1,99 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: America;
+    src: url(AMERIKA_.ttf);
+}
+
+body {
+    background: black;
+    font-family: 'America', sans-serif;
+}
+
+div{
+    margin-top: 1vh;
+    display: block;
+    background: repeating-linear-gradient(180deg, black 0%, #545E61 100%);
+    position: absolute;
+    margin-left: 3vw;
+    width: 96vw;
+    height: 90vh;
+    border: 1px solid white;
+    border-radius: 3vh;
+}
+
+
+
+.parent {
+    opacity: 0.9;
+    position: absolute;
+    margin-left: 3%;
+    margin-top: 1%;
+    list-style: none;
+    color: lightblue;
+    font-size: 4vh;
+}
+
+
+a {
+    color: lightblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #00ffb5;
+}
+
+.parent li {
+    display: block;
+    list-style: none;
+    float: left;
+    line-height: 10vh;
+    width: 18vw;
+    text-align: center;
+    background: linear-gradient(45deg, orange, brown);
+    border-radius: 3vh;
+    border: 0.5vh solid darkred;
+    border-right-width: 0.25vh;
+    border-left-width: 0.25vh;
+    margin-top: -1vh;
+    overflow: hidden;
+}
+
+.parent li:hover {
+    background: linear-gradient(45deg, brown, orangered);
+    color: #00ffb5;
+
+}
+
+
+.parent ul {
+    display: none;
+}
+
+.parent li:hover > ul {
+    display: block;
+    list-style: none;
+}
+
+
+.child {
+    display: table;
+    margin-left: 18vw;
+    margin-top: -10vh;
+    list-style: none;
+    position: absolute;
+}
+
+.child>li{
+    height: 7vh;
+    line-height: 7vh;
+    margin-top: 1.5vh;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
