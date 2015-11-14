@@ -26,25 +26,19 @@ div {
 }
 
 .parent {
+    margin-top: 2vh;
+    position: relative;
+    z-index: 1;
     opacity: 0.9;
-    position: absolute;
     margin-left: 3%;
-    margin-top: 1%;
     list-style: none;
     color: lightblue;
-    font-size: 120%;
-}
-
-a {
-    color: lightblue;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #00ffb5;
+    font-size: 2vmin;
 }
 
 .parent li {
+    position: relative;
+    z-index: 1;
     display: block;
     list-style: none;
     float: left;
@@ -60,26 +54,50 @@ a:hover {
     margin-top: -1vh;
 }
 
+a {
+    color: lightblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #00ffb5;
+}
+
 .parent li:hover {
+    z-index: 2;
     background: linear-gradient(45deg, brown, orangered);
     color: #00ffb5;
 }
 
 .parent ul {
+    z-index: 3;
     display: block;
     opacity: 0;
     transition: opacity .5s ease-in-out;
 
 }
 
+.parent li > ul {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+
 .parent li:hover > ul {
+    visibility: visible;
+    z-index: 3;
     display: block;
-    list-style: none;
     opacity: 1;
 }
 
+
 .child {
-    display: table;
+    visibility: hidden;
+}
+
+
+li:hover>.child{
+    visibility: visible;
     margin-left: 18vw;
     margin-top: -10vh;
     list-style: none;
@@ -90,7 +108,6 @@ a:hover {
     height: 7vh;
     line-height: 7vh;
     margin-top: 1.5vh;
-    display: table-cell;
     vertical-align: middle;
     text-align: center;
 }
