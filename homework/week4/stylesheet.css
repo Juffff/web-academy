@@ -7,12 +7,21 @@ body {
     background: white url("noise.png");
     width: 100%;
     height: 100%;
+    }
+
+#up_line{
+    position: absolute;
+    width: 100%;
+    height: .7vh;
+    background: #7e7e7e
 }
 
-img.inverted{
-    position: relative;
-    width: 100%;
-    height: 100%;
+
+
+.inverted{
+    position: absolute;
+    visibility: visible;
+    margin-left: 15%;
     filter: invert(100%);
     -webkit-filter: invert(100%);
     -moz-filter: invert(100%);
@@ -20,7 +29,7 @@ img.inverted{
     -ms-filter: invert(100%);
     opacity: .3;
 }
-.wrapper {
+/*.wrapper {
     position: relative;
     display: block;
     margin-top: -119.7%;
@@ -70,4 +79,4 @@ img.inverted{
 }
 
 .logoAndCopy {
-}
+}*/
