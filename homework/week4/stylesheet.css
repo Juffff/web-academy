@@ -10,6 +10,7 @@ body {
 }
 
 img.inverted{
+   // visibility: hidden;
     position: relative;
     width: 100%;
     height: 100%;
@@ -26,14 +27,42 @@ img.inverted{
     margin-top: -119.7%;
     margin-left: 11.9%;
     width: 76.2%;
-    height: 150vh;
+    height: 229.7vh;
     border: 1px solid black;
 }
 
 .header {
+    position: absolute;
 }
 
 .top {
+    position: relative;
+}
+
+.topLine{
+    position: absolute;
+    display: block;
+    background-color:  #7e7e7e;
+    width: 100vw;
+    height: 2vh;
+}
+
+.logo{
+    position: relative;
+    left: 13.5vw;
+    top: 12.4vh;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 8vh;
+    letter-spacing: -0.125vw;
+}
+
+.logo > .square{
+    position: absolute;
+    left: -1.7vw;
+    top: -3vh;
+    width: 5.3vh;
+    height: 5.3vh;
+    border: .7vh solid #29c5e6
 }
 
 .menu {
