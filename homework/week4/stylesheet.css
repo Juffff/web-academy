@@ -7,13 +7,27 @@ body {
     background: white url("noise.png");
     width: 100%;
     height: 100%;
-}
+    }
 
+<<<<<<< HEAD
 img.inverted{
    // visibility: hidden;
     position: relative;
+=======
+#up_line{
+    position: absolute;
+>>>>>>> 6be1be5a16cf6b07a8190103df0fce0e4ccd8a7f
     width: 100%;
-    height: 100%;
+    height: .7vh;
+    background: #7e7e7e
+}
+
+
+
+.inverted{
+    position: absolute;
+    visibility: visible;
+    margin-left: 15%;
     filter: invert(100%);
     -webkit-filter: invert(100%);
     -moz-filter: invert(100%);
@@ -21,7 +35,7 @@ img.inverted{
     -ms-filter: invert(100%);
     opacity: .3;
 }
-.wrapper {
+/*.wrapper {
     position: relative;
     display: block;
     margin-top: -119.7%;
@@ -99,4 +113,4 @@ img.inverted{
 }
 
 .logoAndCopy {
-}
+}*/
