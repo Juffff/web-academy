@@ -6,28 +6,69 @@
 body {
     background: white url("noise.png");
     width: 100%;
-    height: 100%;
-    }
+}
 
-<<<<<<< HEAD
-img.inverted{
-   // visibility: hidden;
-    position: relative;
-=======
+#screen{
+    position: absolute;
+    left: 10%;
+    width: 86.6%;
+    height: 1665px;
+    border: 1px solid black;
+}
+
 #up_line{
     position: absolute;
->>>>>>> 6be1be5a16cf6b07a8190103df0fce0e4ccd8a7f
     width: 100%;
     height: .7vh;
     background: #7e7e7e
 }
 
+#wrapper{
+    position: absolute;
+    width: 76.2%;
+    height: 92%;
+    margin-left: 11.9%;
+    border: 1px solid black;
+}
+
+#header{
+    width: 100%;
+    height: 8.5%;
+    background-color: #0000ed;
+    opacity: .4;
+    margin-top: .9%;
+}
+
+#top{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    background-color: pink;
+}
+
+#main{
+    width: 100%;
+    height: 83.6%;
+    border: 1px solid black;
+    background-color: orange;
+    opacity: .4;
+}
+
+#footer{
+    position: absolute;
+    bottom: 7.85%;
+    width:100%;
+    height:6.8%;
+    border:1px solid black;
+    background-color:green;
+    opacity:.3;
+}
 
 
 .inverted{
+    height:auto;
     position: absolute;
     visibility: visible;
-    margin-left: 15%;
     filter: invert(100%);
     -webkit-filter: invert(100%);
     -moz-filter: invert(100%);
@@ -35,82 +76,3 @@ img.inverted{
     -ms-filter: invert(100%);
     opacity: .3;
 }
-/*.wrapper {
-    position: relative;
-    display: block;
-    margin-top: -119.7%;
-    margin-left: 11.9%;
-    width: 76.2%;
-    height: 229.7vh;
-    border: 1px solid black;
-}
-
-.header {
-    position: absolute;
-}
-
-.top {
-    position: relative;
-}
-
-.topLine{
-    position: absolute;
-    display: block;
-    background-color:  #7e7e7e;
-    width: 100vw;
-    height: 2vh;
-}
-
-.logo{
-    position: relative;
-    left: 13.5vw;
-    top: 12.4vh;
-    font-family: Tahoma, Verdana, Segoe, sans-serif;
-    font-size: 8vh;
-    letter-spacing: -0.125vw;
-}
-
-.logo > .square{
-    position: absolute;
-    left: -1.7vw;
-    top: -3vh;
-    width: 5.3vh;
-    height: 5.3vh;
-    border: .7vh solid #29c5e6
-}
-
-.menu {
-}
-
-.main {
-}
-
-.pageTitle {
-}
-
-.subMenu {
-}
-
-.ourOffices {
-}
-
-.aboutUs {
-}
-
-.ourTeam {
-}
-
-.footer {
-}
-
-.socialNetworks {
-}
-
-.tweeterFeed {
-}
-
-.siteMap {
-}
-
-.logoAndCopy {
-}*/
