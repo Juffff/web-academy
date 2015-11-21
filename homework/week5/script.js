@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var a, b, c, d, x1, x2;
 
@@ -30,17 +30,11 @@ function eqCalc(a, b, c) {
 
     if (d < 0) {
         var negativeSqr = Math.sqrt(Math.abs(d)) / (2 * a);
-
-        document.getElementById("result").setAttribute("style", "visibility: visible");
-        document.getElementById("x1").textContent = (-b).toString() + "+" + "i" + negativeSqr.toFixed(4).toString();
-        document.getElementById("x2").textContent = (-b).toString() + "-" + "i" + negativeSqr.toFixed(4).toString();
-
+        printResult((-b).toString() + "+" + "i" + negativeSqr.toFixed(4).toString(),(-b).toString() + "-" + "i" + negativeSqr.toFixed(4).toString());
     } else {
         x1 = (-b + Math.sqrt(d)) / (2 * a);
         x2 = (-b - Math.sqrt(d)) / (2 * a);
-        document.getElementById("result").setAttribute("style", "visibility: visible");
-        document.getElementById("x1").textContent = x1;
-        document.getElementById("x2").textContent = x2;
+        printResult(x1,x2);
     }
 
     console.log('x1 = ' + x1);
@@ -50,9 +44,7 @@ function eqCalc(a, b, c) {
 function eqCalcA0(b, c) {
     x1 = -c / b;
     x2 = x1;
-    document.getElementById("result").setAttribute("style", "visibility: visible");
-    document.getElementById("x1").textContent = x1;
-    document.getElementById("x2").textContent = x2;
+    printResult(x1,x2);
 }
 
 function validStr(str) {
@@ -77,6 +69,13 @@ function validator(str1, str2, str3) {
     else {
         return false;
     }
+}
+
+function printResult(str1, str2){
+
+    document.getElementById("result").setAttribute("style", "visibility: visible");
+    document.getElementById("x1").textContent = str1;
+    document.getElementById("x2").textContent = str2;
 }
 
 
