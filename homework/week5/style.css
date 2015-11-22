@@ -1,3 +1,10 @@
+#wrapper{
+    width: 19vw;
+    padding: 20px;
+    margin: 20px;
+    border: solid black 2px;
+}
+
 input{
     width: 40px;
 }

@@ -78,5 +78,3 @@ function printResult(str1, str2){
     document.getElementById("x2").textContent = str2;
 }
 
-
-
