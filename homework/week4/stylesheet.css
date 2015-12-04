@@ -34,7 +34,6 @@ body {
 #header {
     width: 100%;
     height: 8.5%;
-/ / opacity : .4;
     margin-top: .9%;
 }
 
@@ -123,7 +122,7 @@ body {
 #main {
     width: 100%;
     height: 83.6%;
-    opacity: .4;
+   // opacity: .4;
 }
 
 #aboutus {
@@ -233,7 +232,6 @@ body {
     position: relative;
     top: -34%;
     left: 29%;
-    //border: 1px solid black;
     width: 70.8%;
     height: 59%;
 }
@@ -250,8 +248,6 @@ body {
     font-size: 207%;
     text-transform: uppercase;
     color: white;
-
-
     font-family: 'Oswald', sans-serif;
     font-weight: lighter;
     font-style: italic;
@@ -281,6 +277,7 @@ body {
     line-height: 152%;
 }
 
+<<<<<<< HEAD
 .art_pic{
     position: relative;
     top: 4.8%;
@@ -298,16 +295,106 @@ body {
     height: 96%;
 }
 
+=======
+#article_pic_block{
+    position:relative;
+    top:10%;
+    left:1%;
+// border: 1px solid black;
+    width: 87%;
+    height: 23%;
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:space-between;
+}
+
+#article_pic_block .art_pic{
+    background:white;
+
+    height:95%;
+    width:60%;
+    margin-top:1%;
+    margin-left:1%;
+}
+
+#article_pic_block .art_pic div{
+    background: white url("map.png");
+    width: 98%;
+    height: 98%;
+}
+>>>>>>> 88f04c18c4dddd249bef6389a95afa3f2daf63e3
 
 #ourteam {
     position: relative;
     top: -33%;
     left: 29%;
-    border: 1px solid black;
+//border: 1px solid black;
     width: 70.8%;
     height: 32%;
-    background: blueviolet;
+//background: blueviolet;
 }
+
+#ourteam_text{
+
+    top: 2.5%;
+    position: relative;
+    left: 1%;
+    font-family: Oswald, sans-serif;
+    font-weight:lighter;
+
+    color: white;
+    text-align: left;
+    font-size: 190%;
+    line-height: 151%;
+    width: 87%;
+    background:#29c5e6;
+}
+
+#ourteam_holder{
+
+    position:relative;
+    top:5%;
+    display: flex;
+    flex-wrap: wrap;
+    height:80%;
+}
+
+.ourteam_block{
+
+    width:15%;
+    height:40%;
+    margin-top:1%;
+    margin-left:1%;
+    margin-right:2%;
+}
+
+.ourteam_block .pic{
+    background: white;
+    height:78%;
+    width:95%;
+}
+
+.ourteam_block .pic div{
+    background: white url("map.png");
+    width: 98%;
+    height: 98%;
+
+}
+
+.ourteam_block .text1{
+    margin-top:3%;
+    font-family: Oswald, sans-serif;
+    color: #8f8f8f;
+
+
+}
+.ourteam_block .text2{
+    font-family: Oswald, sans-serif;
+    color:  #29c5e6;
+
+
+}
+
 
 #footer {
     position: absolute;
