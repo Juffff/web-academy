@@ -281,6 +281,24 @@ body {
     line-height: 152%;
 }
 
+.art_pic{
+    position: relative;
+    top: 4.8%;
+    left: -0.5%;
+    width: 50%;
+    height: 23.5%;
+    float: right;
+}
+
+.art_pic div{
+
+    background: white url("map.png");
+    margin: 1% auto;
+    width: 97%;
+    height: 96%;
+}
+
+
 #ourteam {
     position: relative;
     top: -33%;
