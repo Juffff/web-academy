@@ -233,7 +233,7 @@ body {
     position: relative;
     top: -34%;
     left: 29%;
-    //border: 1px solid black;
+//border: 1px solid black;
     width: 70.8%;
     height: 59%;
 }
@@ -288,8 +288,25 @@ body {
     border: 1px solid black;
     width: 70.8%;
     height: 32%;
-    background: blueviolet;
+//background: blueviolet;
 }
+
+#ourteam_text{
+    border:1px solid black;
+
+    top: 2.5%;
+    position: relative;
+    left: 1%;
+    font-family: Oswald, sans-serif;
+    font-weight:lighter;
+
+    color: white;
+    text-align: left;
+    font-size: 190%;
+    line-height: 151%;
+    width: 87%;
+}
+
 
 #footer {
     position: absolute;
