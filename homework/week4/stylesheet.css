@@ -28,7 +28,7 @@ body {
     width: 76.2%;
     height: 92%;
     margin-left: 11.9%;
-    border: 1px solid black;
+ //   border: 1px solid black;
 }
 
 #header {
@@ -122,7 +122,7 @@ body {
 #main {
     width: 100%;
     height: 83.6%;
-   // opacity: .4;
+// opacity: .4;
 }
 
 #aboutus {
@@ -223,7 +223,8 @@ body {
 
 #ouroffices_img div {
     background: white url("map.png");
-    margin: 3.3% auto;
+    margin: auto;
+    margin-top: 2%;
     width: 91%;
     height: 95%;
 }
@@ -277,28 +278,9 @@ body {
     line-height: 152%;
 }
 
-<<<<<<< HEAD
-.art_pic{
-    position: relative;
-    top: 4.8%;
-    left: -0.5%;
-    width: 50%;
-    height: 23.5%;
-    float: right;
-}
-
-.art_pic div{
-
-    background: white url("map.png");
-    margin: 1% auto;
-    width: 97%;
-    height: 96%;
-}
-
-=======
 #article_pic_block{
     position:relative;
-    top:10%;
+    top:5%;
     left:1%;
 // border: 1px solid black;
     width: 87%;
@@ -309,20 +291,21 @@ body {
 }
 
 #article_pic_block .art_pic{
-    background:white;
-
-    height:95%;
-    width:60%;
-    margin-top:1%;
-    margin-left:1%;
+    /* background: white; */
+    height: 95%;
+    width: 60%;
+    margin-top: 1%;
+    margin-left: 1%;
+    border: 1px solid #e7e7e7;
 }
 
 #article_pic_block .art_pic div{
     background: white url("map.png");
     width: 98%;
-    height: 98%;
+    height: 96%;
+    margin: auto;
+    margin-top: 1%;
 }
->>>>>>> 88f04c18c4dddd249bef6389a95afa3f2daf63e3
 
 #ourteam {
     position: relative;
@@ -346,7 +329,7 @@ body {
     text-align: left;
     font-size: 190%;
     line-height: 151%;
-    width: 87%;
+    width: 95%;
     background:#29c5e6;
 }
 
@@ -365,11 +348,11 @@ body {
     height:40%;
     margin-top:1%;
     margin-left:1%;
-    margin-right:2%;
+    margin-right:4%;
 }
 
 .ourteam_block .pic{
-    background: white;
+    border: 1px solid #e7e7e7;
     height:78%;
     width:95%;
 }
@@ -377,7 +360,9 @@ body {
 .ourteam_block .pic div{
     background: white url("map.png");
     width: 98%;
-    height: 98%;
+    height: 96%;
+    margin: auto;
+    margin-top: 1%;
 
 }
 
@@ -385,12 +370,14 @@ body {
     margin-top:3%;
     font-family: Oswald, sans-serif;
     color: #8f8f8f;
+    font-size: 90%;
 
 
 }
 .ourteam_block .text2{
     font-family: Oswald, sans-serif;
     color:  #29c5e6;
+    font-size: 85%;
 
 
 }
@@ -401,48 +388,71 @@ body {
     bottom: 7.85%;
     width: 100%;
     height: 6.8%;
-    border: 1px solid black;
-    background-color: green;
-    opacity: .3;
+    background-color:  #7e7e7e;
 }
 
-#twitterfeed {
-    position: relative;
-    margin-left: 11.9%;
-    border: 1px solid black;
-    width: 23%;
+#footer_box{
+    width: 100%;
     height: 100%;
-    background: blueviolet;
+    position: relative;
+    left: 12%;
+}
+
+.head_text{
+    font-family: Oswald;
+    border-bottom: 1px solid #7e7e7e;
+    position: relative;
+    top: 10%;
+    left: 6%;
+    color: #ffffff;
+}
+
+
+#twitterfeed {
+
+    width: 26%;
+    height: 100%;
+    float: left;
 }
 
 #sitemap {
-    position: relative;
-    margin-left: 34.9%;
-    margin-top: -9.2%;
-    border: 1px solid black;
-    width: 15%;
+
+    width: 13%;
     height: 100%;
-    background: yellowgreen;
+    float: left;
 }
 
 #socialnetworks {
-    position: relative;
-    margin-left: 50%;
-    margin-top: -9.2%;
-    border: 1px solid black;
+
     width: 15%;
     height: 100%;
-    background: blanchedalmond;
+    float: left;
 }
 
 #footerlogo {
-    position: relative;
-    margin-left: 65%;
-    margin-top: -9.2%;
-    border: 1px solid black;
+
     width: 23.1%;
     height: 100%;
-    background: lemonchiffon;
+   float: left;
+
+}
+
+#footerlogo .logo {
+    position: relative;
+    top: 31%;
+    width: 100%;
+    height: 100%;
+    background: url("Logo%20footer.png") no-repeat;
+    left: 43%;
+}
+
+#footerlogo .logo_text {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url("Copyrigh012%20Whitesquare.png") no-repeat;
+    top: -27%;
+    left: 23%;
 }
 
 .inverted {
