@@ -1,0 +1,39 @@
+body {
+    background: #FFE5D7;
+}
+
+.container {
+    margin-left: 25%;
+    background: #FFAC82;
+    display: flex;
+    border: double 2vh #FF681C;
+    border-radius: 5%;
+    width: 90vh;
+    height: 90vh;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.box{
+     width : 20.5%;
+     height : 20.5%;
+     border : inset .4vh #FF681C;
+     border-radius : 25%;
+     text-align : center;
+     line-height : 130%;
+     font-family : fantasy;
+     font-size : 14vh;
+     animation : blinker 4s linear infinite;;
+}
+
+.box:hover{
+    background: red;
+    cursor: pointer
+}
+
+@keyframes blinker {
+    0% {color: black}
+    50%{color: brown}
+    100% {color: black}
+}
