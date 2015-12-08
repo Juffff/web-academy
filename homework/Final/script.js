@@ -40,17 +40,24 @@ function createField() {
     }*/
     var k=0;
     for (var i=0; i<=4; i++){
-        for(var j=0; j<3; j++){
+        for(var j=0; j<4; j++){
             k=k+1;
+            if (k==16){
+                break;}
             box = new Box(i,j, k);
             field.push(box);
             document.getElementById('container').appendChild(createBox(box));
         }
+        if (k==16){
+            box = new Box(i,j, "");
+            field.push(box);
+            document.getElementById('container').appendChild(createBox(box));
+            break;}
     }
 
-    box = new Box("empty","", "");
+   /* box = new Box("empty","", "");
     field.push(box);
-    document.getElementById('container').appendChild(createBox(box));
+    document.getElementById('container').appendChild(createBox(box));*/
 }
 
 createField();
