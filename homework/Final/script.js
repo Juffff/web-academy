@@ -1,9 +1,12 @@
 var field = [];
+var fieldArray = [];
 
-function Box(id, name) {
+
+
+function Box(i, j, name) {
     this.tag = "div";
     this.className = "box";
-    this.id = "box_" + id;
+    this.id = "box_" + i+"_"+j;
     this.innerHTML = name;
 }
 
@@ -20,6 +23,8 @@ function createBox(box) {
     return b;
 }
 
+function moveDown(){}
+
 
 
 function createField() {
@@ -28,12 +33,22 @@ function createField() {
     container.id = "container";
     document.body.appendChild(container);
     var box;
-    for (var i = 0; i <= 14; i++) {
+   /* for (var i = 0; i <= 14; i++) {
         box = new Box(i, i+1);
         field.push(box);
         document.getElementById('container').appendChild(createBox(box));
+    }*/
+    var k=0;
+    for (var i=0; i<=4; i++){
+        for(var j=0; j<3; j++){
+            k=k+1;
+            box = new Box(i,j, k);
+            field.push(box);
+            document.getElementById('container').appendChild(createBox(box));
+        }
     }
-    box = new Box("empty", "");
+
+    box = new Box("empty","", "");
     field.push(box);
     document.getElementById('container').appendChild(createBox(box));
 }
