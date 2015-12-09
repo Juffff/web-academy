@@ -1,5 +1,4 @@
 var field = [];
-var fieldArray = [];
 
 
 
@@ -10,8 +9,12 @@ function Box(i, j, name) {
     this.innerHTML = name;
 }
 
-function action(){
-    document.getElementById("box_1").innerHTML = Date();
+function actionOnOver(){
+console.log(this.id);
+}
+
+function actionOnClick(){
+
 }
 
 function createBox(box) {
@@ -23,7 +26,54 @@ function createBox(box) {
     return b;
 }
 
-function moveDown(){}
+function boxIndexes(box_id){
+    return box_id.split("_").splice(1,2);
+}
+
+function moveDownPossibility(box){
+    var nextI = parseInt(boxIndexes(box)[0])+1;
+    var nextJ = parseInt(boxIndexes(box)[1]);
+    if (document.getElementById("box_" + nextI + "_" + nextJ)!=null &&
+        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML == ""){
+        return true;
+    }else {
+        return false;
+    }
+}
+
+
+function moveUpPossibility(box){
+    var nextI = parseInt(boxIndexes(box)[0])-1;
+    var nextJ = parseInt(boxIndexes(box)[1]);
+    if (document.getElementById("box_" + nextI + "_" + nextJ)!=null &&
+        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML == ""){
+        return true;
+    }else {
+        return false;
+    }
+}
+
+function moveRightPossibility(box){
+    var nextI = parseInt(boxIndexes(box)[0]);
+    var nextJ = parseInt(boxIndexes(box)[1])+1;
+    if (document.getElementById("box_" + nextI + "_" + nextJ)!=null &&
+        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML == ""){
+        return true;
+    }else {
+        return false;
+    }
+}
+
+function moveLeftPossibility(box){
+    var nextI = parseInt(boxIndexes(box)[0]);
+    var nextJ = parseInt(boxIndexes(box)[1])-1;
+    if (document.getElementById("box_" + nextI + "_" + nextJ)!=null &&
+        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML == ""){
+        return true;
+    }else {
+        return false;
+    }
+}
 
 
 
@@ -33,33 +83,31 @@ function createField() {
     container.id = "container";
     document.body.appendChild(container);
     var box;
-   /* for (var i = 0; i <= 14; i++) {
-        box = new Box(i, i+1);
-        field.push(box);
-        document.getElementById('container').appendChild(createBox(box));
-    }*/
-    var k=0;
-    for (var i=0; i<=4; i++){
-        for(var j=0; j<4; j++){
-            k=k+1;
-            if (k==16){
-                break;}
-            box = new Box(i,j, k);
+    var k = 0;
+    for (var i = 0; i <= 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            k = k + 1;
+            if (k == 16) {
+                break;
+            }
+            box = new Box(i, j, k);
             field.push(box);
             document.getElementById('container').appendChild(createBox(box));
+            document.getElementById("box_"+i+"_"+j).addEventListener("mouseover", actionOnOver);
+            document.getElementById("box_"+i+"_"+j).addEventListener("click", actionOnClick);
         }
-        if (k==16){
-            box = new Box(i,j, "");
+        if (k == 16) {
+            box = new Box(i, j, "");
             field.push(box);
             document.getElementById('container').appendChild(createBox(box));
-            break;}
+            document.getElementById("box_"+i+"_"+j).addEventListener("mouseover", actionOnOver);
+            document.getElementById("box_"+i+"_"+j).addEventListener("click", actionOnClick);
+            break;
+        }
     }
 
-   /* box = new Box("empty","", "");
-    field.push(box);
-    document.getElementById('container').appendChild(createBox(box));*/
 }
+
 
 createField();
 
-document.getElementById("box_1").addEventListener("click", action);
