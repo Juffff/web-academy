@@ -15,25 +15,93 @@ body {
     flex-wrap: wrap;
 }
 
-.box{
-     width : 20.5%;
-     height : 20.5%;
-     border : inset .4vh #FF681C;
-     border-radius : 25%;
-     text-align : center;
-     line-height : 130%;
-     font-family : fantasy;
-     font-size : 14vh;
-     animation : blinker 4s linear infinite;;
+.box {
+    width: 20.5%;
+    height: 20.5%;
+    border: inset .4vh #FF681C;
+    border-radius: 25%;
+    text-align: center;
+    line-height: 130%;
+    font-family: fantasy;
+    font-size: 14vh;
+    animation: blinker 4s linear infinite;;
+
 }
 
-.box:hover{
-    background: red;
+.box:hover {
+    background: #FFAD52;
     cursor: pointer
 }
 
+.down {
+    position: relative;
+    content: "";
+    border-left: 2vh solid rgba(113, 101, 58, 0);
+    border-right: 2vh solid rgba(113, 101, 58, 0);
+    border-top: 2vh solid red;
+    left: 7vh;
+    top: -2.5vh;
+    width: 0.3vh;
+    visibility: hidden;
+}
+
+.up {
+    position: relative;
+    content: "";
+    border-left: 2vh solid rgba(113, 101, 58, 0);
+    border-right: 2vh solid rgba(113, 101, 58, 0);
+    border-bottom: 2vh solid red;
+    left: 7vh;
+    top: -19.5vh;
+    width: 0.3vh;
+    visibility: hidden;
+}
+
+.left {
+    position: relative;
+    content: "";
+    border-right: 2vh solid red;
+    border-bottom: 2vh solid rgba(113, 101, 58, 0);
+    border-top: 2vh solid rgba(113, 101, 58, 0);
+    left: 0vh;
+    top: -14.5vh;
+    width: 0.3vh;
+    visibility: hidden;
+}
+
+.right {
+    position: relative;
+    content: "";
+    border-left: 2vh solid red;
+    border-bottom: 2vh solid rgba(113, 101, 58, 0);
+    border-top: 2vh solid rgba(113, 101, 58, 0);
+    left: 16vh;
+    top: -18.5vh;
+    width: 0.3vh;
+    visibility: hidden;
+}
+
+/*.box:before{
+
+    position: fixed;
+    content: "";
+    position: relative;
+    border-left: 3vh solid rgba(113, 101, 58, 0);
+    border-right: 3vh solid rgba(113, 101, 58, 0);
+    border-bottom: 3vh solid red;
+    left: 3vh;
+    !* margin: -3vh; *!
+    top: -17.5vh;
+}*/
+
 @keyframes blinker {
-    0% {color: black}
-    50%{color: brown}
-    100% {color: black}
+    0% {
+        color: black
+    }
+    50% {
+        color: brown
+    }
+    100% {
+        color: black
+    }
 }
