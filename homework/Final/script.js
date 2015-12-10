@@ -15,7 +15,55 @@ console.log(this.id);
 
 function actionOnClick(){
 
+   // console.log(tempText);
+    if(moveDownPossibility(this.id)){moveDown(this.id);}
+    if(moveUpPossibility(this.id)){moveUp(this.id);}
+    if(moveLeftPossibility(this.id)){moveLeft(this.id);}
+    if(moveRightPossibility(this.id)){moveRight(this.id);}
 }
+
+function moveDown(box){
+    var thisId = box;
+    var tempText = document.getElementById(thisId).innerHTML;
+    document.getElementById(thisId).innerHTML = "";
+    console.log(tempText);
+    var nextI = parseInt(boxIndexes(box)[0])+1;
+    var nextJ = parseInt(boxIndexes(box)[1]);
+    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
+}
+
+function moveUp(box){
+    var thisId = box;
+    var tempText = document.getElementById(thisId).innerHTML;
+    document.getElementById(thisId).innerHTML = "";
+    console.log(tempText);
+    var nextI = parseInt(boxIndexes(box)[0])-1;
+    var nextJ = parseInt(boxIndexes(box)[1]);
+    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML= tempText;
+}
+
+function moveLeft(box){
+    var thisId = box;
+    var tempText = document.getElementById(thisId).innerHTML;
+    document.getElementById(thisId).innerHTML = "";
+    console.log(tempText);
+    var nextI = parseInt(boxIndexes(box)[0]);
+    var nextJ = parseInt(boxIndexes(box)[1])-1;
+    console.log("box_" + nextI + "_" + nextJ);
+    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
+}
+
+function moveRight(box){
+    var thisId = box;
+    var tempText = document.getElementById(thisId).innerHTML;
+    document.getElementById(thisId).innerHTML = "";
+    console.log(tempText);
+    var nextI = parseInt(boxIndexes(box)[0]);
+    var nextJ = parseInt(boxIndexes(box)[1])+1;
+    console.log("box_" + nextI + "_" + nextJ);
+    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
+}
+
 
 function createBox(box) {
     var b;
@@ -53,6 +101,17 @@ function moveUpPossibility(box){
     }
 }
 
+function moveLeftPossibility(box){
+    var nextI = parseInt(boxIndexes(box)[0]);
+    var nextJ = parseInt(boxIndexes(box)[1])-1;
+    if (document.getElementById("box_" + nextI + "_" + nextJ)!=null &&
+        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML == ""){
+        return true;
+    }else {
+        return false;
+    }
+}
+
 function moveRightPossibility(box){
     var nextI = parseInt(boxIndexes(box)[0]);
     var nextJ = parseInt(boxIndexes(box)[1])+1;
@@ -64,16 +123,7 @@ function moveRightPossibility(box){
     }
 }
 
-function moveLeftPossibility(box){
-    var nextI = parseInt(boxIndexes(box)[0]);
-    var nextJ = parseInt(boxIndexes(box)[1])-1;
-    if (document.getElementById("box_" + nextI + "_" + nextJ)!=null &&
-        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML == ""){
-        return true;
-    }else {
-        return false;
-    }
-}
+
 
 
 
