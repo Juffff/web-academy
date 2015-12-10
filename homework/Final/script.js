@@ -1,4 +1,26 @@
-var field = [];
+var checkArray = [];
+function checkArrayFill() {
+    for (var i = 1; i <= 15; i++) {
+        checkArray.push(i);
+    }
+}
+
+function currentField() {
+    var currentArray = [];
+    for (var i = 0; i <= document.getElementById('container').children.length-2; i++) {
+        currentArray.push(parseInt(document.getElementById('container').children[i].innerHTML.split("<")[0]));
+    }
+    return currentArray;
+}
+
+function checker(){
+    var currentArray = currentField();
+    var counter = 0;
+    for(var i=0;i<currentArray.length;i++){
+        if (currentArray[i]!=checkArray[i]) {counter++;}
+    }
+    return counter==0;
+}
 
 
 function Box(i, j, name) {
@@ -31,10 +53,12 @@ function actionOnOut() {
 }
 
 function hideArrows(id) {
-    document.getElementById(id).children[0].style.visibility = "hidden";
-    document.getElementById(id).children[1].style.visibility = "hidden";
-    document.getElementById(id).children[2].style.visibility = "hidden";
-    document.getElementById(id).children[3].style.visibility = "hidden";
+    if (document.getElementById(id).children.length > 0) {
+        document.getElementById(id).children[0].style.visibility = "hidden";
+        document.getElementById(id).children[1].style.visibility = "hidden";
+        document.getElementById(id).children[2].style.visibility = "hidden";
+        document.getElementById(id).children[3].style.visibility = "hidden";
+    }
 
 }
 
@@ -64,6 +88,7 @@ function moveDown(box) {
     var nextJ = parseInt(boxIndexes(box)[1]);
     document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
     hideArrows("box_" + nextI + "_" + nextJ);
+    checker();
 
 }
 
@@ -75,6 +100,7 @@ function moveUp(box) {
     var nextJ = parseInt(boxIndexes(box)[1]);
     document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
     hideArrows("box_" + nextI + "_" + nextJ);
+    checker();
 }
 
 function moveLeft(box) {
@@ -85,6 +111,7 @@ function moveLeft(box) {
     var nextJ = parseInt(boxIndexes(box)[1]) - 1;
     document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
     hideArrows("box_" + nextI + "_" + nextJ);
+    checker();
 }
 
 function moveRight(box) {
@@ -95,6 +122,7 @@ function moveRight(box) {
     var nextJ = parseInt(boxIndexes(box)[1]) + 1;
     document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
     hideArrows("box_" + nextI + "_" + nextJ);
+    checker();
 }
 
 
@@ -185,6 +213,7 @@ function moveRightPossibility(box) {
 
 
 function createField() {
+    checkArrayFill();
     var container = document.createElement('div');
     container.className = "container";
     container.id = "container";
@@ -198,7 +227,6 @@ function createField() {
                 break;
             }
             box = new Box(i, j, k);
-            field.push(box);
             document.getElementById('container').appendChild(createBox(box));
             document.getElementById("box_" + i + "_" + j).addEventListener("mouseover", actionOnOver);
             document.getElementById("box_" + i + "_" + j).addEventListener("mouseout", actionOnOut);
@@ -210,7 +238,6 @@ function createField() {
         }
         if (k == 16) {
             box = new Box(i, j, "&nbsp;");
-            field.push(box);
             document.getElementById('container').appendChild(createBox(box));
             document.getElementById("box_" + i + "_" + j).addEventListener("mouseover", actionOnOver);
             document.getElementById("box_" + i + "_" + j).addEventListener("mouseout", actionOnOut);
