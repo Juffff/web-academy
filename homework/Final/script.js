@@ -1,131 +1,119 @@
-var checkArray = [];
-var moveCounter = 0;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DIRECTION POSSIBILITIES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-function movePossibility(box){
+function movePossibility(box) {
 
-    function checkDirrectionPossibility(nextI, nextJ){
-        if (document.getElementById("box_" + nextI + "_" + nextJ) != null &&
-            document.getElementById("box_" + nextI + "_" + nextJ).innerHTML.indexOf('nbsp') > 0) {
-            return true;
-        } else {
-            return false;
-        }
+    function checkDirectionPossibility(nextI, nextJ) {
+        return !!(document.getElementById("box_" + nextI + "_" + nextJ) != null &&
+        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML.indexOf('nbsp') > 0);
     }
 
-    if (checkDirrectionPossibility((parseInt(boxIndexes(box)[0]) + 1),(parseInt(boxIndexes(box)[1])))){
+    if (checkDirectionPossibility((parseInt(boxIndexes(box)[0]) + 1), (parseInt(boxIndexes(box)[1])))) {
         return "down";
-    } else
-
-    if (checkDirrectionPossibility(parseInt(boxIndexes(box)[0]) - 1,(parseInt(boxIndexes(box)[1])))){
+    } else if (checkDirectionPossibility(parseInt(boxIndexes(box)[0]) - 1, (parseInt(boxIndexes(box)[1])))) {
         return "up";
-    } else
-
-
-    if (checkDirrectionPossibility(parseInt(boxIndexes(box)[0]),parseInt(boxIndexes(box)[1]) - 1)){
+    } else if (checkDirectionPossibility(parseInt(boxIndexes(box)[0]), parseInt(boxIndexes(box)[1]) - 1)) {
         return "left";
-    } else
-
-    if (checkDirrectionPossibility(parseInt(boxIndexes(box)[0]),parseInt(boxIndexes(box)[1]) + 1)){
+    } else if (checkDirectionPossibility(parseInt(boxIndexes(box)[0]), parseInt(boxIndexes(box)[1]) + 1)) {
         return "right";
     } else {
-        return("no");
+        return ("no");
     }
 
 }
-
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DIRECTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-function moveDown(box) {
-    var thisId = box;
-    var tempText = document.getElementById(thisId).innerHTML;
-    document.getElementById(thisId).innerHTML = "&nbsp;";
-    var nextI = parseInt(boxIndexes(box)[0]) + 1;
-    var nextJ = parseInt(boxIndexes(box)[1]);
-    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
-    hideArrows("box_" + nextI + "_" + nextJ);
-    checker();
-
+function swapHTML(box1, box2) {
+    var tempHTML = document.getElementById(box1).innerHTML;
+    document.getElementById(box1).innerHTML = document.getElementById(box2).innerHTML;
+    document.getElementById(box2).innerHTML = tempHTML;
 }
 
-function moveUp(box) {
-    var thisId = box;
-    var tempText = document.getElementById(thisId).innerHTML;
-    document.getElementById(thisId).innerHTML = "&nbsp;";
-    var nextI = parseInt(boxIndexes(box)[0]) - 1;
-    var nextJ = parseInt(boxIndexes(box)[1]);
-    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
-    hideArrows("box_" + nextI + "_" + nextJ);
-    checker();
-}
+function move(box, dirrection) {
 
-function moveLeft(box) {
-    var thisId = box;
-    var tempText = document.getElementById(thisId).innerHTML;
-    document.getElementById(thisId).innerHTML = "&nbsp;";
-    var nextI = parseInt(boxIndexes(box)[0]);
-    var nextJ = parseInt(boxIndexes(box)[1]) - 1;
-    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
-    hideArrows("box_" + nextI + "_" + nextJ);
-    checker();
-}
+    var nextI, nextJ;
 
-function moveRight(box) {
-    var thisId = box;
-    var tempText = document.getElementById(thisId).innerHTML;
-    document.getElementById(thisId).innerHTML = "&nbsp;";
-    var nextI = parseInt(boxIndexes(box)[0]);
-    var nextJ = parseInt(boxIndexes(box)[1]) + 1;
-    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
-    hideArrows("box_" + nextI + "_" + nextJ);
-    checker();
+    function doMove(nextI, nextJ) {
+        var box2 = "box_" + nextI + "_" + nextJ;
+        swapHTML(box, box2);
+        hideArrows(box2);
+        checker();
+        incMoveCounter();
+    }
+
+    switch (dirrection) {
+        case "down":
+        {
+            nextI = parseInt(boxIndexes(box)[0]) + 1;
+            nextJ = parseInt(boxIndexes(box)[1]);
+            doMove(nextI, nextJ);
+            break;
+        }
+        case "up":
+        {
+            nextI = parseInt(boxIndexes(box)[0]) - 1;
+            nextJ = parseInt(boxIndexes(box)[1]);
+            doMove(nextI, nextJ);
+            break;
+        }
+        case "left":
+        {
+            nextI = parseInt(boxIndexes(box)[0]);
+            nextJ = parseInt(boxIndexes(box)[1]) - 1;
+            doMove(nextI, nextJ);
+            break;
+        }
+        case "right":
+        {
+            nextI = parseInt(boxIndexes(box)[0]);
+            nextJ = parseInt(boxIndexes(box)[1]) + 1;
+            doMove(nextI, nextJ);
+            break;
+        }
+        default :
+        {
+            break;
+        }
+
+    }
 }
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function actionOnOver() {
-    console.log(movePossibility(this.id));
-    switch (movePossibility(this.id)){
-        case ("down"):{
+    switch (movePossibility(this.id)) {
+        case ("down"):
+        {
 
             document.getElementById(this.id).children[0].style.visibility = "visible";
             break;
         }
 
-        case ("up"):{
+        case ("up"):
+        {
             document.getElementById(this.id).children[1].style.visibility = "visible";
             break;
         }
 
-        case ("left"):{
+        case ("left"):
+        {
             document.getElementById(this.id).children[2].style.visibility = "visible";
             break;
         }
 
-        case ("right"):{
+        case ("right"):
+        {
             document.getElementById(this.id).children[3].style.visibility = "visible";
             break;
         }
-        default :{
-
+        default :
+        {
+            break;
         }
     }
-   /* if (moveDownPossibility(this.id)) {
-        document.getElementById(this.id).children[0].style.visibility = "visible";
-    }
-    if (moveUpPossibility(this.id)) {
-        document.getElementById(this.id).children[1].style.visibility = "visible";
-    }
-    if (moveLeftPossibility(this.id)) {
-        document.getElementById(this.id).children[2].style.visibility = "visible";
-    }
-    if (moveRightPossibility(this.id)) {
-        document.getElementById(this.id).children[3].style.visibility = "visible";
-    }*/
 }
 
 function actionOnOut() {
@@ -134,50 +122,53 @@ function actionOnOut() {
 
 function hideArrows(id) {
     if (document.getElementById(id).children.length > 0) {
-        for(var i=0; i<=3; i++ ) {
+        for (var i = 0; i <= 3; i++) {
             document.getElementById(id).children[i].style.visibility = "hidden";
         }
     }
-
 }
 
 
 function actionOnClick() {
 
-    if (moveDownPossibility(this.id)) {
-        moveDown(this.id);
-        incMoveCounter();
+    switch (movePossibility(this.id)){
+        case "down":{
+            move(this.id, "down");
+            break;
+        }
+
+        case "up":{
+            move(this.id, "up");
+            break;
+        }
+
+        case "left":{
+            move(this.id, "left");
+            break;
+        }
+
+        case "right":{
+            move(this.id, "right");
+            break;
+        }
     }
-    if (moveUpPossibility(this.id)) {
-        moveUp(this.id);
-        incMoveCounter();
-    }
-    if (moveLeftPossibility(this.id)) {
-        moveLeft(this.id);
-        incMoveCounter();
-    }
-    if (moveRightPossibility(this.id)) {
-        moveRight(this.id);
-        incMoveCounter();
-    }
+
 
     save();
 
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~COUNTERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var moveCounter = 0;
 
-function incMoveCounter(){
+function incMoveCounter() {
     moveCounter++;
     document.getElementById("counterLabel").innerHTML = "Moves: " + moveCounter;
 }
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CHECKERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var checkArray = [];
 
 function checkArrayFill() {
     for (var i = 1; i <= 15; i++) {
@@ -219,13 +210,16 @@ function checker() {
 }
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CONTROLS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 function Box(i, j, name) {
     this.tag = "div";
     this.className = "box";
     this.id = "box_" + i + "_" + j;
     this.innerHTML = name;
 }
-
 
 
 function newGame(array) {
@@ -237,7 +231,7 @@ function newGame(array) {
 
 }
 
-function startNewRandomGame(){
+function startNewRandomGame() {
     Array.prototype.shuffle = function () {
         return this.sort(function () {
             return 0.5 - Math.random();
@@ -249,16 +243,11 @@ function startNewRandomGame(){
     checker();
 }
 
-function sort(){
-  newGame(checkArray);
-  moveCounter=0;
+function sort() {
+    newGame(checkArray);
+    moveCounter = 0;
     checker();
 }
-
-
-
-
-
 
 
 function createBox(box) {
@@ -270,41 +259,12 @@ function createBox(box) {
     return b;
 }
 
-function Down() {
-    var b = document.createElement('div');
-    b.className = 'down';
-    return b;
-}
-
-
-function Up() {
-    var b = document.createElement('div');
-    b.className = 'up';
-    return b;
-}
-
-
-function Left() {
-    var b = document.createElement('div');
-    b.className = 'left';
-    return b;
-}
-
-
-function Right() {
-    var b = document.createElement('div');
-    b.className = 'right';
-    return b;
-}
-
 function boxIndexes(box_id) {
     return box_id.split("_").splice(1, 2);
 }
 
 
-
-
-function createField(array) {
+function createField() {
 
     checkArrayFill();
     var board = document.createElement('div');
@@ -336,31 +296,32 @@ function createField(array) {
     var newGameButton = document.createElement('button');
     newGameButton.className = "newGameButton";
     newGameButton.id = "newGameButton";
-    newGameButton.type="button";
+    newGameButton.type = "button";
     newGameButton.innerHTML = "NEW GAME";
     newGameButton.addEventListener("click", startNewRandomGame);
     resultDesk.appendChild(newGameButton);
 
 }
 
-function fill(array){
+function fill(array) {
 
     function addBox(box) {
         document.getElementById('container').appendChild(createBox(box));
         document.getElementById("box_" + i + "_" + j).addEventListener("mouseover", actionOnOver);
         document.getElementById("box_" + i + "_" + j).addEventListener("mouseout", actionOnOut);
         document.getElementById("box_" + i + "_" + j).addEventListener("click", actionOnClick);
-        document.getElementById("box_" + i + "_" + j).appendChild(new Down());
-        document.getElementById("box_" + i + "_" + j).appendChild(new Up());
-        document.getElementById("box_" + i + "_" + j).appendChild(new Left());
-        document.getElementById("box_" + i + "_" + j).appendChild(new Right());
+        document.getElementById("box_" + i + "_" + j).appendChild(downArrow());
+        document.getElementById("box_" + i + "_" + j).appendChild(upArrow());
+        document.getElementById("box_" + i + "_" + j).appendChild(leftArrow());
+        document.getElementById("box_" + i + "_" + j).appendChild(rightArrow());
     }
+
     var box;
 
 
     var k = 0;
-    for (var i = 0; i <= parseInt(Math.sqrt(array.length+1)); i++) {
-        for (var j = 0; j < parseInt(Math.sqrt(array.length+1)); j++) {
+    for (var i = 0; i <= parseInt(Math.sqrt(array.length + 1)); i++) {
+        for (var j = 0; j < parseInt(Math.sqrt(array.length + 1)); j++) {
 
             if (k == array.length) {
                 break;
@@ -375,23 +336,52 @@ function fill(array){
 }
 
 
-function save(){
+function save() {
     localStorage.setItem("field", currentField());
     localStorage.setItem("moves", moveCounter);
 
 }
 
-function load(){
+function load() {
 
     newGame(localStorage.getItem("field").split(","));
     moveCounter = parseInt(localStorage.getItem("moves"));
     checker();
 }
 
+function downArrow() {
+    var b = document.createElement('div');
+    b.className = 'down';
+    return b;
+}
+
+
+function upArrow() {
+    var b = document.createElement('div');
+    b.className = 'up';
+    return b;
+}
+
+
+function leftArrow() {
+    var b = document.createElement('div');
+    b.className = 'left';
+    return b;
+}
+
+
+function rightArrow() {
+    var b = document.createElement('div');
+    b.className = 'right';
+    return b;
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~START~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 createField();
-window.onload=load();
-
-
-
-
+window.onload = load();
 checker();
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
