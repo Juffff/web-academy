@@ -1,5 +1,12 @@
 var checkArray = [];
-var moveCounter = -1;
+var moveCounter = 0;
+
+//
+
+function incMoveCounter(){
+    moveCounter++;
+    document.getElementById("counterLabel").innerHTML = "Moves: " + moveCounter;
+}
 
 function checkArrayFill() {
     for (var i = 1; i <= 15; i++) {
@@ -28,7 +35,6 @@ function checker() {
             counter++;
         }
     }
-    moveCounter++;
     document.getElementById("counterLabel").innerHTML = "Moves: " + moveCounter;
 
     if (counter == 0) {
@@ -39,7 +45,6 @@ function checker() {
         document.getElementById("resultLabel").innerHTML = "State: UNSORTED";
         return false;
     }
-    save();
 }
 
 
@@ -69,13 +74,13 @@ function startNewRandomGame(){
     };
     var shuffleArray = checkArray.slice();
     newGame(shuffleArray.shuffle());
-    moveCounter = -1;
+    moveCounter = 0;
     checker();
 }
 
 function sort(){
   newGame(checkArray);
-  moveCounter=-1;
+  moveCounter=0;
     checker();
 }
 
@@ -115,16 +120,22 @@ function actionOnClick() {
 
     if (moveDownPossibility(this.id)) {
         moveDown(this.id);
+        incMoveCounter();
     }
     if (moveUpPossibility(this.id)) {
         moveUp(this.id);
+        incMoveCounter();
     }
     if (moveLeftPossibility(this.id)) {
         moveLeft(this.id);
+        incMoveCounter();
     }
     if (moveRightPossibility(this.id)) {
         moveRight(this.id);
+        incMoveCounter();
     }
+
+    save();
 
 }
 
@@ -325,11 +336,7 @@ function fill(array){
             addBox(box);
             k = k + 1;
         }
-       /* if (k == array.length-1) {
-            box = new Box(i, j, array[k]);
-            addBox(box);
-            break;
-        }*/
+
     }
 
 }
@@ -347,12 +354,14 @@ function save(){
 function load(){
 
     newGame(localStorage.getItem("field").split(","));
-    moveCounter = parseInt(localStorage.getItem("moves"))-1;
+    moveCounter = parseInt(localStorage.getItem("moves"));
     checker();
 }
 
 createField();
-
 window.onload=load();
+
+
+
 
 checker();

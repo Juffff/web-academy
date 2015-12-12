@@ -31,10 +31,10 @@ body {
 .resultDesk {
 
     background: #FFAC82;
-    border: outset .5vh #FF681C;
     border-radius: 5%;
     width: 45vh;
-    height: 80vh;
+    height: 32vh;
+    font-size: 5vh;
 
 }
 
@@ -49,7 +49,7 @@ body {
 }
 
 .counterLabel{
-    top: 7%;
+    top: 17%;
 }
 
 button,
