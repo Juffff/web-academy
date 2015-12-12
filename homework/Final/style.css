@@ -28,19 +28,29 @@ body {
     flex-wrap: wrap;
 }
 
-.resultdesk {
+.resultDesk {
 
     background: #FFAC82;
-    display: flex;
     border: outset .5vh #FF681C;
     border-radius: 5%;
     width: 45vh;
     height: 80vh;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+
 }
 
+.resultLabel, .counterLabel{
+    position: relative;
+    top: 4%;
+    left: 8%;
+    width: 80%;
+    height: 8%;
+    font-family: FANTASY, serif;
+    text-align: center;
+}
+
+.counterLabel{
+    top: 7%;
+}
 
 
 .box {
