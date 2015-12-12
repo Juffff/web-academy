@@ -52,6 +52,40 @@ body {
     top: 7%;
 }
 
+button,
+button:active,
+button:focus {
+    outline: none;
+}
+
+.newGameButton {
+    position: relative;
+    width: 100%;
+    margin-top: 25%;
+
+    background: #d9aa34;
+    background-image: -webkit-linear-gradient(top, #d9aa34, #b82b2b);
+    background-image: -moz-linear-gradient(top, #d9aa34, #b82b2b);
+    background-image: -ms-linear-gradient(top, #d9aa34, #b82b2b);
+    background-image: -o-linear-gradient(top, #d9aa34, #b82b2b);
+    background-image: linear-gradient(to bottom, #d9aa34, #b82b2b);
+    border-radius: 10vh;
+    font-family: FANTASY, serif;
+    color: black;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.newGameButton:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #fdf24d, #db131d);
+    background-image: -moz-linear-gradient(top, #fdf24d, #db131d);
+    background-image: -ms-linear-gradient(top, #fdf24d, #db131d);
+    background-image: -o-linear-gradient(top, #fdf24d, #db131d);
+    background-image: linear-gradient(to bottom, #fdf24d, #db131d);
+    text-decoration: none;
+}
 
 .box {
     width: 20.5%;

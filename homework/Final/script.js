@@ -10,7 +10,7 @@ function checkArrayFill() {
 
 function currentField() {
     var currentArray = [];
-    for (var i = 0; i <= document.getElementById('container').children.length - 2; i++) {
+    for (var i = 0; i <= document.getElementById('container').children.length - 1; i++) {
         if (document.getElementById('container').children[i].innerHTML.split("<")[0] == "&nbsp;") {
             currentArray.push("&nbsp;");
         } else {
@@ -39,6 +39,7 @@ function checker() {
         document.getElementById("resultLabel").innerHTML = "State: UNSORTED";
         return false;
     }
+    save();
 }
 
 
@@ -48,6 +49,37 @@ function Box(i, j, name) {
     this.id = "box_" + i + "_" + j;
     this.innerHTML = name;
 }
+
+
+
+function newGame(array) {
+
+    while (document.getElementById("container").childNodes[0]) {
+        document.getElementById("container").removeChild(document.getElementById("container").childNodes[0]);
+    }
+    fill(array);
+
+}
+
+function startNewRandomGame(){
+    Array.prototype.shuffle = function () {
+        return this.sort(function () {
+            return 0.5 - Math.random();
+        });
+    };
+    var shuffleArray = checkArray.slice();
+    newGame(shuffleArray.shuffle());
+    moveCounter = -1;
+    checker();
+}
+
+function sort(){
+  newGame(checkArray);
+  moveCounter=-1;
+    checker();
+}
+
+
 
 
 function actionOnOver() {
@@ -260,7 +292,9 @@ function createField(array) {
     var newGameButton = document.createElement('button');
     newGameButton.className = "newGameButton";
     newGameButton.id = "newGameButton";
+    newGameButton.type="button";
     newGameButton.innerHTML = "NEW GAME";
+    newGameButton.addEventListener("click", startNewRandomGame);
     resultDesk.appendChild(newGameButton);
 
 }
@@ -281,8 +315,8 @@ function fill(array){
 
 
     var k = 0;
-    for (var i = 0; i <= parseInt(Math.sqrt(array.length)); i++) {
-        for (var j = 0; j < parseInt(Math.sqrt(array.length)); j++) {
+    for (var i = 0; i <= parseInt(Math.sqrt(array.length+1)); i++) {
+        for (var j = 0; j < parseInt(Math.sqrt(array.length+1)); j++) {
 
             if (k == array.length) {
                 break;
@@ -290,20 +324,35 @@ function fill(array){
             box = new Box(i, j, array[k]);
             addBox(box);
             k = k + 1;
-
-
         }
-        if (k == array.length-1) {
+       /* if (k == array.length-1) {
             box = new Box(i, j, array[k]);
             addBox(box);
             break;
-        }
+        }*/
     }
 
 }
 
 
 
+
+
+function save(){
+    localStorage.setItem("field", currentField());
+    localStorage.setItem("moves", moveCounter);
+
+}
+
+function load(){
+
+    newGame(localStorage.getItem("field").split(","));
+    moveCounter = parseInt(localStorage.getItem("moves"))-1;
+    checker();
+}
+
 createField();
-fill(checkArray);
+
+window.onload=load();
+
 checker();
