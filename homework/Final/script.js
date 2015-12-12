@@ -1,12 +1,183 @@
 var checkArray = [];
 var moveCounter = 0;
 
-//
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DIRECTION POSSIBILITIES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function movePossibility(box){
+
+    function checkDirrectionPossibility(nextI, nextJ){
+        if (document.getElementById("box_" + nextI + "_" + nextJ) != null &&
+            document.getElementById("box_" + nextI + "_" + nextJ).innerHTML.indexOf('nbsp') > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    if (checkDirrectionPossibility((parseInt(boxIndexes(box)[0]) + 1),(parseInt(boxIndexes(box)[1])))){
+        return "down";
+    } else
+
+    if (checkDirrectionPossibility(parseInt(boxIndexes(box)[0]) - 1,(parseInt(boxIndexes(box)[1])))){
+        return "up";
+    } else
+
+
+    if (checkDirrectionPossibility(parseInt(boxIndexes(box)[0]),parseInt(boxIndexes(box)[1]) - 1)){
+        return "left";
+    } else
+
+    if (checkDirrectionPossibility(parseInt(boxIndexes(box)[0]),parseInt(boxIndexes(box)[1]) + 1)){
+        return "right";
+    } else {
+        return("no");
+    }
+
+}
+
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~DIRECTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function moveDown(box) {
+    var thisId = box;
+    var tempText = document.getElementById(thisId).innerHTML;
+    document.getElementById(thisId).innerHTML = "&nbsp;";
+    var nextI = parseInt(boxIndexes(box)[0]) + 1;
+    var nextJ = parseInt(boxIndexes(box)[1]);
+    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
+    hideArrows("box_" + nextI + "_" + nextJ);
+    checker();
+
+}
+
+function moveUp(box) {
+    var thisId = box;
+    var tempText = document.getElementById(thisId).innerHTML;
+    document.getElementById(thisId).innerHTML = "&nbsp;";
+    var nextI = parseInt(boxIndexes(box)[0]) - 1;
+    var nextJ = parseInt(boxIndexes(box)[1]);
+    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
+    hideArrows("box_" + nextI + "_" + nextJ);
+    checker();
+}
+
+function moveLeft(box) {
+    var thisId = box;
+    var tempText = document.getElementById(thisId).innerHTML;
+    document.getElementById(thisId).innerHTML = "&nbsp;";
+    var nextI = parseInt(boxIndexes(box)[0]);
+    var nextJ = parseInt(boxIndexes(box)[1]) - 1;
+    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
+    hideArrows("box_" + nextI + "_" + nextJ);
+    checker();
+}
+
+function moveRight(box) {
+    var thisId = box;
+    var tempText = document.getElementById(thisId).innerHTML;
+    document.getElementById(thisId).innerHTML = "&nbsp;";
+    var nextI = parseInt(boxIndexes(box)[0]);
+    var nextJ = parseInt(boxIndexes(box)[1]) + 1;
+    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
+    hideArrows("box_" + nextI + "_" + nextJ);
+    checker();
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function actionOnOver() {
+    console.log(movePossibility(this.id));
+    switch (movePossibility(this.id)){
+        case ("down"):{
+
+            document.getElementById(this.id).children[0].style.visibility = "visible";
+            break;
+        }
+
+        case ("up"):{
+            document.getElementById(this.id).children[1].style.visibility = "visible";
+            break;
+        }
+
+        case ("left"):{
+            document.getElementById(this.id).children[2].style.visibility = "visible";
+            break;
+        }
+
+        case ("right"):{
+            document.getElementById(this.id).children[3].style.visibility = "visible";
+            break;
+        }
+        default :{
+
+        }
+    }
+   /* if (moveDownPossibility(this.id)) {
+        document.getElementById(this.id).children[0].style.visibility = "visible";
+    }
+    if (moveUpPossibility(this.id)) {
+        document.getElementById(this.id).children[1].style.visibility = "visible";
+    }
+    if (moveLeftPossibility(this.id)) {
+        document.getElementById(this.id).children[2].style.visibility = "visible";
+    }
+    if (moveRightPossibility(this.id)) {
+        document.getElementById(this.id).children[3].style.visibility = "visible";
+    }*/
+}
+
+function actionOnOut() {
+    hideArrows(this.id);
+}
+
+function hideArrows(id) {
+    if (document.getElementById(id).children.length > 0) {
+        for(var i=0; i<=3; i++ ) {
+            document.getElementById(id).children[i].style.visibility = "hidden";
+        }
+    }
+
+}
+
+
+function actionOnClick() {
+
+    if (moveDownPossibility(this.id)) {
+        moveDown(this.id);
+        incMoveCounter();
+    }
+    if (moveUpPossibility(this.id)) {
+        moveUp(this.id);
+        incMoveCounter();
+    }
+    if (moveLeftPossibility(this.id)) {
+        moveLeft(this.id);
+        incMoveCounter();
+    }
+    if (moveRightPossibility(this.id)) {
+        moveRight(this.id);
+        incMoveCounter();
+    }
+
+    save();
+
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~COUNTERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function incMoveCounter(){
     moveCounter++;
     document.getElementById("counterLabel").innerHTML = "Moves: " + moveCounter;
 }
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
 
 function checkArrayFill() {
     for (var i = 1; i <= 15; i++) {
@@ -87,102 +258,7 @@ function sort(){
 
 
 
-function actionOnOver() {
-    if (moveDownPossibility(this.id)) {
-        document.getElementById(this.id).children[0].style.visibility = "visible";
-    }
-    if (moveUpPossibility(this.id)) {
-        document.getElementById(this.id).children[1].style.visibility = "visible";
-    }
-    if (moveLeftPossibility(this.id)) {
-        document.getElementById(this.id).children[2].style.visibility = "visible";
-    }
-    if (moveRightPossibility(this.id)) {
-        document.getElementById(this.id).children[3].style.visibility = "visible";
-    }
-}
 
-function actionOnOut() {
-    hideArrows(this.id);
-}
-
-function hideArrows(id) {
-    if (document.getElementById(id).children.length > 0) {
-        for(var i=0; i<=3; i++ ) {
-            document.getElementById(id).children[i].style.visibility = "hidden";
-        }
-    }
-
-}
-
-
-function actionOnClick() {
-
-    if (moveDownPossibility(this.id)) {
-        moveDown(this.id);
-        incMoveCounter();
-    }
-    if (moveUpPossibility(this.id)) {
-        moveUp(this.id);
-        incMoveCounter();
-    }
-    if (moveLeftPossibility(this.id)) {
-        moveLeft(this.id);
-        incMoveCounter();
-    }
-    if (moveRightPossibility(this.id)) {
-        moveRight(this.id);
-        incMoveCounter();
-    }
-
-    save();
-
-}
-
-function moveDown(box) {
-    var thisId = box;
-    var tempText = document.getElementById(thisId).innerHTML;
-    document.getElementById(thisId).innerHTML = "&nbsp;";
-    var nextI = parseInt(boxIndexes(box)[0]) + 1;
-    var nextJ = parseInt(boxIndexes(box)[1]);
-    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
-    hideArrows("box_" + nextI + "_" + nextJ);
-    checker();
-
-}
-
-function moveUp(box) {
-    var thisId = box;
-    var tempText = document.getElementById(thisId).innerHTML;
-    document.getElementById(thisId).innerHTML = "&nbsp;";
-    var nextI = parseInt(boxIndexes(box)[0]) - 1;
-    var nextJ = parseInt(boxIndexes(box)[1]);
-    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
-    hideArrows("box_" + nextI + "_" + nextJ);
-    checker();
-}
-
-function moveLeft(box) {
-    var thisId = box;
-    var tempText = document.getElementById(thisId).innerHTML;
-    document.getElementById(thisId).innerHTML = "&nbsp;";
-    var nextI = parseInt(boxIndexes(box)[0]);
-    var nextJ = parseInt(boxIndexes(box)[1]) - 1;
-    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
-    hideArrows("box_" + nextI + "_" + nextJ);
-    checker();
-}
-
-function moveRight(box) {
-    var thisId = box;
-    var tempText = document.getElementById(thisId).innerHTML;
-    document.getElementById(thisId).innerHTML = "&nbsp;";
-    var nextI = parseInt(boxIndexes(box)[0]);
-    var nextJ = parseInt(boxIndexes(box)[1]) + 1;
-    document.getElementById("box_" + nextI + "_" + nextJ).innerHTML = tempText;
-    hideArrows("box_" + nextI + "_" + nextJ);
-    checker();
-}
 
 
 function createBox(box) {
@@ -225,50 +301,7 @@ function boxIndexes(box_id) {
     return box_id.split("_").splice(1, 2);
 }
 
-function moveDownPossibility(box) {
-    var nextI = parseInt(boxIndexes(box)[0]) + 1;
-    var nextJ = parseInt(boxIndexes(box)[1]);
-    if (document.getElementById("box_" + nextI + "_" + nextJ) != null &&
-        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML.indexOf('nbsp') > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
-
-function moveUpPossibility(box) {
-    var nextI = parseInt(boxIndexes(box)[0]) - 1;
-    var nextJ = parseInt(boxIndexes(box)[1]);
-    if (document.getElementById("box_" + nextI + "_" + nextJ) != null &&
-        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML.indexOf('nbsp') > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function moveLeftPossibility(box) {
-    var nextI = parseInt(boxIndexes(box)[0]);
-    var nextJ = parseInt(boxIndexes(box)[1]) - 1;
-    if (document.getElementById("box_" + nextI + "_" + nextJ) != null &&
-        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML.indexOf('nbsp') > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function moveRightPossibility(box) {
-    var nextI = parseInt(boxIndexes(box)[0]);
-    var nextJ = parseInt(boxIndexes(box)[1]) + 1;
-    if (document.getElementById("box_" + nextI + "_" + nextJ) != null &&
-        document.getElementById("box_" + nextI + "_" + nextJ).innerHTML.indexOf('nbsp') > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 
 function createField(array) {
@@ -340,9 +373,6 @@ function fill(array){
     }
 
 }
-
-
-
 
 
 function save(){
