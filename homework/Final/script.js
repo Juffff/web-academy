@@ -1,4 +1,6 @@
 var checkArray = [];
+var moveCounter = 0;
+
 function checkArrayFill() {
     for (var i = 1; i <= 15; i++) {
         checkArray.push(i);
@@ -19,6 +21,7 @@ function checker(){
     for(var i=0;i<currentArray.length;i++){
         if (currentArray[i]!=checkArray[i]) {counter++;}
     }
+    moveCounter++;
     return counter==0;
 }
 
@@ -214,10 +217,23 @@ function moveRightPossibility(box) {
 
 function createField() {
     checkArrayFill();
+    var board = document.createElement('div');
+    board.className = "board";
+    board.id = "board";
+    document.body.appendChild(board);
+
     var container = document.createElement('div');
     container.className = "container";
     container.id = "container";
-    document.body.appendChild(container);
+    board.appendChild(container);
+
+    var resutDesk = document.createElement('div');
+    resutDesk.className = "resultdesk";
+    resutDesk.id = "resultdesk";
+    board.appendChild(resutDesk);
+
+
+
     var box;
     var k = 0;
     for (var i = 0; i <= 4; i++) {

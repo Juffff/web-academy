@@ -1,19 +1,47 @@
 body {
     background: #FFE5D7;
 }
-
-.container {
-    margin-left: 25%;
+.board {
+    margin-left: 13%;
+    margin-top: 2%;
     background: #FFAC82;
     display: flex;
     border: double 2vh #FF681C;
-    border-radius: 5%;
-    width: 90vh;
-    height: 90vh;
+    border-radius: 4%;
+    width: 140vh;
+    height: 85vh;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
+
+.container {
+
+    background: #FFAC82;
+    display: flex;
+    border: inset .5vh #FF681C;
+    border-radius: 5%;
+    width: 80vh;
+    height: 80vh;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.resultdesk {
+
+    background: #FFAC82;
+    display: flex;
+    border: outset .5vh #FF681C;
+    border-radius: 5%;
+    width: 45vh;
+    height: 80vh;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
 
 .box {
     width: 20.5%;
@@ -21,7 +49,7 @@ body {
     border: inset .4vh #FF681C;
     border-radius: 25%;
     text-align: center;
-    line-height: 130%;
+    line-height: 120%;
     font-family: fantasy;
     font-size: 14vh;
     animation: blinker 4s linear infinite;;
@@ -52,7 +80,7 @@ body {
     border-right: 2vh solid rgba(113, 101, 58, 0);
     border-bottom: 2vh solid red;
     left: 7vh;
-    top: -19.5vh;
+    top: -18.5vh;
     width: 0.3vh;
     visibility: hidden;
 }
@@ -63,7 +91,6 @@ body {
     border-right: 2vh solid red;
     border-bottom: 2vh solid rgba(113, 101, 58, 0);
     border-top: 2vh solid rgba(113, 101, 58, 0);
-    left: 0vh;
     top: -14.5vh;
     width: 0.3vh;
     visibility: hidden;
@@ -75,24 +102,13 @@ body {
     border-left: 2vh solid red;
     border-bottom: 2vh solid rgba(113, 101, 58, 0);
     border-top: 2vh solid rgba(113, 101, 58, 0);
-    left: 16vh;
+    left: 14.5vh;
     top: -18.5vh;
     width: 0.3vh;
     visibility: hidden;
 }
 
-/*.box:before{
 
-    position: fixed;
-    content: "";
-    position: relative;
-    border-left: 3vh solid rgba(113, 101, 58, 0);
-    border-right: 3vh solid rgba(113, 101, 58, 0);
-    border-bottom: 3vh solid red;
-    left: 3vh;
-    !* margin: -3vh; *!
-    top: -17.5vh;
-}*/
 
 @keyframes blinker {
     0% {
