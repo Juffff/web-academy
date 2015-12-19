@@ -233,6 +233,7 @@ function app() {
             document.getElementById("container").removeChild(document.getElementById("container").childNodes[0]);
         }
         fill(array);
+        save();
 
     }
 
@@ -349,7 +350,8 @@ function app() {
 
     function load() {
 
-        newGame(localStorage.getItem("field").split(","));
+        localStorage.getItem("field")!=null?newGame(localStorage.getItem("field").split(",")):startNewRandomGame();
+
         moveCounter = parseInt(localStorage.getItem("moves"));
         checker();
     }
